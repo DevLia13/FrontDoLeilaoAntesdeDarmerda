@@ -1,0 +1,137 @@
+<head>
+    <style>
+        /* Container básico */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+header {
+  background: white;
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Logo */
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  background: #2563eb;
+  border-radius: 6px;
+}
+
+/* Navegação */
+nav {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+nav a {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #2563eb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: #1d4ed8;
+}
+
+/* Área de busca e botões */
+.search-sign {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Caixa de busca */
+.search-box {
+  position: relative;
+}
+.search-box input[type="text"] {
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  width: 200px;
+  transition: border-color 0.3s;
+}
+.search-box input[type="text"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+.search-box svg {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  fill: #888;
+}
+
+/* Botões */
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background: #1d4ed8;
+}
+    </style>
+</head>
+<header class="container">
+    <a href="#" class="logo" aria-label="BidMaster Home">
+      <div class="logo-icon" aria-hidden="true"></div>
+      BidMaster
+    </a>
+    <nav aria-label="Menu principal">
+      <a href="#">Home</a>
+      <a href="#">Categories</a>
+      <a href="#">Auctions</a>
+      <a href="#">Contact</a>
+    </nav>
+    <div class="search-sign">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Buscar leilões..." aria-label="Buscar leilões" />
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 21l-4.35-4.35m2.35-5.65a7 7 0 1 1-14 0 7 7 0 0 1 14 0z" stroke="#888" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <button type="button" id="signInBtn" aria-label="Entrar">Entrar</button>
+      <button type="button" id="registerBtn" aria-label="Registrar">Registrar</button>
+    </div>
+  </header>
+  <script>
+    // Exemplo: captura o texto digitado e exibe no console
+const searchInput = document.getElementById('searchInput');
+
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.trim();
+  console.log('Busca:', query);
+  // Aqui você pode implementar filtro ou chamada para API
+});
+  </script>

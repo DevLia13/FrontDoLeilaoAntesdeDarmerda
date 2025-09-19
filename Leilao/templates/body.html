@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BidMaster - Leilões Online</title>
+  <style>
+    /* Reset básico */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      padding: 5rem 1rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: white;
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+      border-radius: 12px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.25);
+    }
+    .hero .btn-group {
+      display: inline-flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    button {
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.75rem 1.75rem;
+      border-radius: 8px;
+      border: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      filter: brightness(0.9);
+    }
+    button.outline {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+      box-shadow: none;
+    }
+    button.outline:hover {
+      background: white;
+      color: #7c3aed;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.5);
+    }
+
+    /* Container para seções */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Seção de títulos */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #1e293b;
+    }
+    .section-title h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+    }
+    .section-title p {
+      color: #64748b;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    /* Grid de leilões */
+    .auctions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    /* Card de leilão */
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 12px 30px rgb(124 58 237 / 0.3);
+      transform: translateY(-6px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 3px solid #7c3aed;
+    }
+    .card-content {
+      padding: 1.25rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-weight: 800;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #7c3aed;
+    }
+    .card-desc {
+      font-size: 1rem;
+      color: #475569;
+      margin-bottom: 1rem;
+      flex-grow: 1;
+    }
+    .card-info {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: #64748b;
+      margin-bottom: 1rem;
+    }
+    .card-info span {
+      font-weight: 700;
+      color: #7c3aed;
+    }
+    .card-footer {
+      padding: 0 1.5rem 1.5rem;
+    }
+    .card-footer button {
+      width: 100%;
+      background-color: #7c3aed;
+      color: white;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.75rem 0;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    }
+    .card-footer button:hover {
+      background-color: #5b21b6;
+      box-shadow: 0 6px 16px rgba(91, 33, 182, 0.6);
+    }
+
+    /* Grid de categorias */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(140px,1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+      margin-bottom: 3rem;
+    }
+    .category-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+      padding: 2rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .category-card:hover {
+      background: #7c3aed;
+      color: white;
+    }
+    .category-icon {
+      width: 48px;
+      height: 48px;
+      background: #7c3aed;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: white;
+      user-select: none;
+      box-shadow: 0 4px 12px rgba(124, 58, 237, 0.5);
+      transition: background-color 0.3s;
+    }
+    .category-card:hover .category-icon {
+      background-color: white;
+      color: #7c3aed;
+      box-shadow: none;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" role="banner">
+      <h1>Descubra Tesouros Raros</h1>
+      <p>Participe de leilões online e dê lances em itens únicos do mundo todo.</p>
+      <div class="btn-group">
+        <button type="button" onclick="alert('Explorar leilões')">Explorar Leilões</button>
+        <button type="button" class="outline" onclick="alert('Como funciona')">Como Funciona</button>
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="featured-title">
+      <div class="section-title">
+        <h2 id="featured-title">Leilões em Destaque</h2>
+        <p>Itens selecionados com lances competitivos</p>
+      </div>
+      <div class="auctions-grid" id="auctionsGrid">
+        <!-- Cards inseridos via JS -->
+      </div>
+      <div style="text-align:center; margin-top: 2rem;">
+        <button type="button" onclick="alert('Ver todos os leilões')">Ver Todos os Leilões</button>
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="categories-title">
+      <div class="section-title">
+        <h2 id="categories-title">Categorias</h2>
+        <p>Encontre o que mais te interessa</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid">
+        <!-- Categorias inseridas via JS -->
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Dados simulados dos leilões
+    const auctions = [
+      {
+        title: "Rolex Submariner Vintage",
+        description: "Peça rara dos anos 60",
+        currentBid: 12450,
+        bids: 24,
+        endsIn: "2d 12h",
+        image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80",
+      },
+      {
+        title: "Pintura Abstrata Moderna",
+        description: "Obra contemporânea assinada",
+        currentBid: 3200,
+        bids: 18,
+        endsIn: "1d 6h",
+        image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=400&q=80",
+      },
+      {
+        title: "Poltrona Antiga Século XIX",
+        description: "Estilo renascentista francês",
+        currentBid: 890,
+        bids: 9,
+        endsIn: "3d 8h",
+        image: "https://images.unsplash.com/photo-1505692794403-0a1e7a7a7a7a?auto=format&fit=crop&w=400&q=80",
+      },
+    ];
+
+    // Categorias
+    const categories = [
+      "Joias",
+      "Arte",
+      "Móveis",
+      "Relógios",
+      "Eletrônicos",
+      "Colecionáveis",
+    ];
+
+    // Renderiza os cards de leilões
+    function renderAuctions() {
+      const grid = document.getElementById("auctionsGrid");
+      grid.innerHTML = "";
+      auctions.forEach(a => {
+        const card = document.createElement("article");
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${a.image}" alt="${a.title}" />
+          <div class="card-content">
+            <h3 class="card-title">${a.title}</h3>
+            <p class="card-desc">${a.description}</p>
+            <div class="card-info">
+              <div><strong>Lance Atual:</strong> <span>$${a.currentBid.toLocaleString()}</span></div>
+              <div><strong>Lances:</strong> ${a.bids}</div>
+              <div><strong>Termina em:</strong> ${a.endsIn}</div>
+            </div>
+            <div class="card-footer">
+              <button onclick="alert('Você deu um lance em: ${a.title}')">Dar Lance</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Renderiza categorias
+    function renderCategories() {
+      const grid = document.getElementById("categoriesGrid");
+      grid.innerHTML = "";
+      categories.forEach(category => {
+        const card = document.createElement("div");
+        card.className = "category-card";
+        card.innerHTML = `
+          <div class="category-icon">${category[0]}</div>
+          <p>${category}</p>
+        `;
+        card.onclick = () => alert(`Categoria selecionada: ${category}`);
+        grid.appendChild(card);
+      });
+    }
+
+    // Inicializa renderizações
+    renderAuctions();
+    renderCategories();
+  </script>
+</body>
+</html>

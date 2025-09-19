@@ -1,0 +1,20 @@
+Lista de afazeres para o front en:
+
+fazer o front das páginas de:
+
+- pagina de profile que mostre os dados do usuário(foto(botão de alterar foto), saldo, lances vencedores, email e etc), um link pra pagina de pagamento e tenha um link para redirecionar pra pagina de configurações
+
+-pagina configurações: conter opçao de modo claro e escuro, acessibilidade, trocar senha, trocar email, modo anonimo, adicionar ou mudar endereço, definir endereço principal, celular, telefone
+
+-pagina Home: uma pagina que explique o objetivo do site e direcione para pagina de leilões, tenha os dados de contato, itens em destaque, categorias e propagandas do ratinho.
+
+-pagina de leilões: uma pagina que lista os leilões com ajax dinamicamente(mostra foto, nome, horário de inicio, status, lance minimo), um botão de criar leilões que redireciona pra uma pagina de criação de leilão
+
+-pagina de criação de leilão: uma pagina de form com os dados necessários pra criar um leilão separada em etapas(opcional) (ver no banco de dados)
+
+-pagina de leilão: mostrar o produto leiloado, o participantes, os lances e os botões de lance, e atributos de produto, um botão de deletar o leilão(só mostrar pro criador do leilão)
+
+-pagina de login: pagina de login(voce sabe como é, sim sei!)
+
+-pagina de cadastro(sing in): criar uma pra pessoa juridica e outra pra física separada em etapas! (os parametros necessários estão no banco)
+

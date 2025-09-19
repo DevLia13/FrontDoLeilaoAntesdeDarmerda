@@ -1,0 +1,145 @@
+<head>
+    <style>
+        footer {
+  background: white;
+  border-top: 1px solid #ddd;
+  padding: 3rem 1rem 2rem;
+  margin-top: 3rem;
+  color: #475569;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+}
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #2563eb;
+  margin-bottom: 1rem;
+}
+.footer-logo-icon {
+  width: 28px;
+  height: 28px;
+  background: #2563eb;
+  border-radius: 6px;
+}
+.footer-links ul {
+  list-style: none;
+  padding-left: 0;
+}
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+.footer-links a {
+  color: #475569;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: #2563eb;
+}
+.newsletter p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+.newsletter form {
+  display: flex;
+  gap: 0.5rem;
+}
+.newsletter input[type="email"] {
+  flex-grow: 1;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+.newsletter input[type="email"]:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 5px rgba(37, 99, 235, 0.5);
+}
+.newsletter button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.newsletter button:hover {
+  background: #1d4ed8;
+}
+.footer-bottom {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+    </style>
+</head>
+<footer>
+    <div class="footer-grid container">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon" aria-hidden="true"></div>
+          BidMaster
+        </div>
+        <p>Seu destino principal para leilões online e colecionáveis raros.</p>
+      </div>
+      <div class="footer-links" aria-label="Links rápidos">
+        <h3>Links Rápidos</h3>
+        <ul>
+          <li><a href="#">Sobre Nós</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Termos</a></li>
+        </ul>
+      </div>
+      <div class="footer-links" aria-label="Categorias">
+        <h3>Categorias</h3>
+        <ul>
+          <li><a href="#">Arte & Pinturas</a></li>
+          <li><a href="#">Joias</a></li>
+          <li><a href="#">Relógios</a></li>
+          <li><a href="#">Móveis</a></li>
+        </ul>
+      </div>
+      <div class="newsletter" aria-label="Newsletter">
+        <h3>Newsletter</h3>
+        <p>Fique por dentro dos últimos leilões</p>
+        <form id="newsletterForm" onsubmit="subscribeNewsletter(event)">
+          <input type="email" id="newsletterEmail" placeholder="Seu email" required aria-label="Seu email" />
+          <button type="submit">Inscrever</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2024 BidMaster. Todos os direitos reservados.
+    </div>
+  </footer>
+  <script>
+    function subscribeNewsletter(event) {
+  event.preventDefault();
+  const emailInput = document.getElementById('newsletterEmail');
+  const email = emailInput.value.trim();
+
+  if (email) {
+    alert(`Obrigado por se inscrever com o email: ${email}`);
+    emailInput.value = '';
+  } else {
+    alert('Por favor, insira um email válido.');
+  }
+}
+  </script>
